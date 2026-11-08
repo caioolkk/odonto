@@ -12,9 +12,10 @@ export type Treatment = {
 }
 export type Payment = {
   id: string; treatment_id: string; amount_cents: number; paid_at: string;
-  method: PaymentMethod; note: string | null; created_at: string;
+  method: PaymentMethod; note: string | null; created_at: string; is_adjustment?: boolean;
 }
-export type ClinicData = { patients: Patient[]; treatments: Treatment[]; payments: Payment[] }
+export type ArchivedRecord = { entity_type: 'patient' | 'treatment'; entity_id: string }
+export type ClinicData = { patients: Patient[]; treatments: Treatment[]; payments: Payment[]; archivedRecords?: ArchivedRecord[] }
 export type Intake = {
   patient_id: string | null; name: string; birth_date: string; phone: string;
   referral: Referral; started_on: string; treatment_name: string; notes: string;
